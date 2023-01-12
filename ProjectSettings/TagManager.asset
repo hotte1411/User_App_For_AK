@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Category
+  - Item
+  - Menu
+  - 1
   layers:
   - Default
   - TransparentFX
