@@ -1,8 +1,6 @@
-/*using System;
-using UnityEngine;
+using System;
 
-[Serializable]
-public class AlcoholItem : MonoBehaviour
+public class AlcoholItemModel
 {
     public string label { get; private set; }
     public string type { get; private set; }
@@ -10,7 +8,7 @@ public class AlcoholItem : MonoBehaviour
     public float strength { get; private set; }
     public float price { get; private set; }
 
-    public AlcoholItem(string label, string type, float volume, float stregth, float price)
+    public AlcoholItemModel(string label, string type, float volume, float stregth, float price)
     {
         this.label = label ?? throw new ArgumentNullException(nameof(label));
         this.type = type ?? throw new ArgumentNullException(nameof(type));
@@ -19,4 +17,3 @@ public class AlcoholItem : MonoBehaviour
         this.price = price;
     }
 }
-*/
