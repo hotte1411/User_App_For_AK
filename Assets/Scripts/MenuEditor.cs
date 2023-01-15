@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class MenuEditor : MonoBehaviour
@@ -18,11 +15,6 @@ public class MenuEditor : MonoBehaviour
     {
         FillMenuList(items);
         InstantiateAllItems(items);
-    }
-
-    private void Update()
-    {
-
     }
 
     // Удаление всех строк (game objects) и Создание новых строк из списка моделей
@@ -68,7 +60,7 @@ public class MenuEditor : MonoBehaviour
         items.Sort(sorter.SortByPriceFunc);
         InstantiateAllItems(items);
     }
-    
+
     public void SortReversedByPrice()
     {
         items.Sort(sorter.SortReversedByPriceFunc);
@@ -122,3 +114,4 @@ public class MenuEditor : MonoBehaviour
         InstantiateAllItems(items);
     }
 }
+
