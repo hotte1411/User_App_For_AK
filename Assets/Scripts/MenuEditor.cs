@@ -17,7 +17,7 @@ public class MenuEditor : MonoBehaviour
         InstantiateAllItems(items);
     }
 
-    // Удаление всех строк (game objects) и Создание новых строк из списка моделей
+    // Удаление всех строк (game objects) и cоздание новых строк из списка моделей
     private void InstantiateAllItems(List<AlcoholItemModel> models)
     {
         foreach (Transform child in contentAclohol)
@@ -43,16 +43,16 @@ public class MenuEditor : MonoBehaviour
     }
 
     //Заполнение списка строками 
-    private void FillMenuList(List<AlcoholItemModel> items)
+    private void FillMenuList(List<AlcoholItemModel> models)
     {
-        items.Add(new AlcoholItemModel("Aperol Aperitivo", "liqueur", 150, 16, 110));
-        items.Add(new AlcoholItemModel("Ballantine's", "whiskey", 100, 35, 100));
-        items.Add(new AlcoholItemModel("Jack Daniel's", "whiskey", 50, 40, 80));
-        items.Add(new AlcoholItemModel("Jameson Irish Whiskey", "whiskey", 50, 40, 90));
-        items.Add(new AlcoholItemModel("Jägermeister", "liquer", 50, 30, 80));
-        items.Add(new AlcoholItemModel("Cubalibra", "coctail", 150, 35, 120));
-        items.Add(new AlcoholItemModel("Irish Banana", "coctail", 200, 19, 150));
-        items.Add(new AlcoholItemModel("Bacardi Carta Blanca", "rome", 50, 40, 100));
+        models.Add(new AlcoholItemModel("Aperol Aperitivo", "liqueur", 150, 16, 110));
+        models.Add(new AlcoholItemModel("Ballantine's", "whiskey", 100, 35, 100));
+        models.Add(new AlcoholItemModel("Jack Daniel's", "whiskey", 50, 40, 80));
+        models.Add(new AlcoholItemModel("Jameson Irish Whiskey", "whiskey", 50, 40, 90));
+        models.Add(new AlcoholItemModel("Jägermeister", "liquer", 50, 30, 80));
+        models.Add(new AlcoholItemModel("Cubalibra", "coctail", 150, 35, 120));
+        models.Add(new AlcoholItemModel("Irish Banana", "coctail", 200, 19, 150));
+        models.Add(new AlcoholItemModel("Bacardi Carta Blanca", "rome", 50, 40, 100));
     }
 
     public void SortByPrice()
