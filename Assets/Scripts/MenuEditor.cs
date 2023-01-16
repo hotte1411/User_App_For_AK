@@ -2,7 +2,6 @@
 using UnityEngine;
 using TMPro;
 
-
 public class MenuEditor : MonoBehaviour
 {
     [SerializeField] Transform alcoholItemPrefab;

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfbdf62f04c88548b4988626537d9f1, type: 3}
   m_Name: VodkaLime
   m_EditorClassIdentifier: Assembly-CSharp::AlcoholItemModel
-  _label: 
-  _type: 
-  _volume: 0
-  _strength: 0
-  _price: 0
+  _label: Vodka + Lime
+  _type: "\u043A\u043E\u043A\u0442\u0435\u0439\u043B\u044C"
+  _volume: 150
+  _strength: 20
+  _price: 120
+  _id: 1
   _prefab: {fileID: 117555974032902987, guid: 3bb164dbd2d76f54898525a56717b652, type: 3}
-  text: {fileID: 0}

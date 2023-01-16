@@ -19,7 +19,6 @@ public class Sorter
         if (a.strength < b.strength) return -1;
         else if (a.strength > b.strength) return 1;
         else return 0;
-
     }
 
     public int SortReversedByStrengthFunc(AlcoholItemData a, AlcoholItemData b)

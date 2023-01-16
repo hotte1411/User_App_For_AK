@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfbdf62f04c88548b4988626537d9f1, type: 3}
   m_Name: JaggerMeister
   m_EditorClassIdentifier: Assembly-CSharp::AlcoholItemModel
-  _label: 
-  _type: 
-  _volume: 0
-  _strength: 0
-  _price: 0
+  _label: JaggerMeister
+  _type: "\u043B\u0438\u043A\u0435\u0440"
+  _volume: 40
+  _strength: 40
+  _price: 90
+  _id: 0
   _prefab: {fileID: 117555974032902987, guid: 3bb164dbd2d76f54898525a56717b652, type: 3}
-  text: {fileID: 0}

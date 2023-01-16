@@ -9959,6 +9959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alcoholItemPrefab: {fileID: 117555974032902986, guid: 3bb164dbd2d76f54898525a56717b652, type: 3}
   contentAclohol: {fileID: 560348530}
+  alcoholItemsData:
+  - {fileID: 11400000, guid: 6c9b5402ad40d2d449500c8a9ee6fedb, type: 2}
+  - {fileID: 11400000, guid: cdbb1e75d6fb38744811f8c01ec5354e, type: 2}
 --- !u!4 &938230905
 Transform:
   m_ObjectHideFlags: 0
