@@ -16,7 +16,7 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         //Получить кликнутый элемент 
         clickedElement = eventData.pointerCurrentRaycast.gameObject.transform;
         //Установить смещение для правильного свайпа
-        offset = clickedElement.position - Input.mousePosition;
+        offset = clickedElement.localPosition - Input.mousePosition;
         //Закэшировать начальную позицию
         startPosition = clickedElement.GetComponent<RectTransform>().anchoredPosition;
     }
@@ -26,9 +26,9 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         //Условие, позволяющее свайпать позиции в меню
         if (clickedElement != null && clickedElement.CompareTag("Item"))
         {
-            Vector3 newPosition = clickedElement.position;
+            Vector3 newPosition = clickedElement.localPosition;
             newPosition.x = Input.mousePosition.x + offset.x;
-            clickedElement.position = newPosition;
+            clickedElement.localPosition = newPosition;
 
 
             //Порог свайпа до активации 
@@ -38,8 +38,8 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             if (clickedElement.localPosition.x >= threshold)
             {
                 clickedElement.GetChild(5).gameObject.SetActive(true);
-            } 
-            else if (clickedElement.localPosition.x <= threshold) 
+            }
+            else if (clickedElement.localPosition.x <= threshold)
             {
                 clickedElement.GetChild(5).gameObject.SetActive(false);
             }

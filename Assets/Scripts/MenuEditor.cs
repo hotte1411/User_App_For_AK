@@ -2,23 +2,22 @@
 using UnityEngine;
 using TMPro;
 
+
 public class MenuEditor : MonoBehaviour
 {
     [SerializeField] Transform alcoholItemPrefab;
     [SerializeField] RectTransform contentAclohol;
-
-    [SerializeField] public List<AlcoholItemModel> items = new();
+    [SerializeField] List<AlcoholItemData> alcoholItemsData = new();
 
     private Sorter sorter = new();
 
     void Start()
     {
-        FillMenuList(items);
-        InstantiateAllItems(items);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     // Удаление всех строк (game objects) и cоздание новых строк из списка моделей
-    private void InstantiateAllItems(List<AlcoholItemModel> models)
+    private void InstantiateAllItems(List<AlcoholItemData> models)
     {
         foreach (Transform child in contentAclohol)
         {
@@ -33,7 +32,7 @@ public class MenuEditor : MonoBehaviour
     }
 
     //Заполнение строк game object'а значениями из модели
-    private void InitializeItemView(GameObject instance, AlcoholItemModel model)
+    private void InitializeItemView(GameObject instance, AlcoholItemData model)
     {
         instance.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.label;
         instance.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.type;
@@ -42,76 +41,63 @@ public class MenuEditor : MonoBehaviour
         instance.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
     }
 
-    //Заполнение списка строками 
-    private void FillMenuList(List<AlcoholItemModel> models)
-    {
-        models.Add(new AlcoholItemModel("Aperol Aperitivo", "liqueur", 150, 16, 110));
-        models.Add(new AlcoholItemModel("Ballantine's", "whiskey", 100, 35, 100));
-        models.Add(new AlcoholItemModel("Jack Daniel's", "whiskey", 50, 40, 80));
-        models.Add(new AlcoholItemModel("Jameson Irish Whiskey", "whiskey", 50, 40, 90));
-        models.Add(new AlcoholItemModel("Jägermeister", "liquer", 50, 30, 80));
-        models.Add(new AlcoholItemModel("Cubalibra", "coctail", 150, 35, 120));
-        models.Add(new AlcoholItemModel("Irish Banana", "coctail", 200, 19, 150));
-        models.Add(new AlcoholItemModel("Bacardi Carta Blanca", "rome", 50, 40, 100));
-    }
-
     public void SortByPrice()
     {
-        items.Sort(sorter.SortByPriceFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortByPriceFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortReversedByPrice()
     {
-        items.Sort(sorter.SortReversedByPriceFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortReversedByPriceFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortByStrength()
     {
-        items.Sort(sorter.SortByStrengthFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortByStrengthFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortReversedByStrength()
     {
-        items.Sort(sorter.SortReversedByStrengthFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortReversedByStrengthFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortByVolume()
     {
-        items.Sort(sorter.SortByVolumeFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortByVolumeFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortReversedByVolume()
     {
-        items.Sort(sorter.SortReversedByVolumeFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortReversedByVolumeFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortByLabel()
     {
-        items.Sort(sorter.SortByLabelFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortByLabelFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortReversedByLabel()
     {
-        items.Sort(sorter.SortReversedByLabelFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortReversedByLabelFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
     public void SortByType()
     {
-        items.Sort(sorter.SortByTypeFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortByTypeFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 
     public void SortReversedByType()
     {
-        items.Sort(sorter.SortReversedByTypeFunc);
-        InstantiateAllItems(items);
+        alcoholItemsData.Sort(sorter.SortReversedByTypeFunc);
+        InstantiateAllItems(alcoholItemsData);
     }
 }
 
