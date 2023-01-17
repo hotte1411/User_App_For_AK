@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class MenuEditor : MonoBehaviour
 {
     [SerializeField] Transform alcoholItemPrefab;
     [SerializeField] RectTransform contentAclohol;
     [SerializeField] List<AlcoholItemData> alcoholItemsData = new();
-
-    private Sorter sorter = new();
 
     void Start()
     {
@@ -42,61 +41,61 @@ public class MenuEditor : MonoBehaviour
 
     public void SortByPrice()
     {
-        alcoholItemsData.Sort(sorter.SortByPriceFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderBy(i => i.price).ToList();  
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortReversedByPrice()
     {
-        alcoholItemsData.Sort(sorter.SortReversedByPriceFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderByDescending(i => i.price).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortByStrength()
     {
-        alcoholItemsData.Sort(sorter.SortByStrengthFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderBy(i => i.strength).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortReversedByStrength()
     {
-        alcoholItemsData.Sort(sorter.SortReversedByStrengthFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderByDescending(i => i.strength).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortByVolume()
     {
-        alcoholItemsData.Sort(sorter.SortByVolumeFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderBy(i => i.volume).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortReversedByVolume()
     {
-        alcoholItemsData.Sort(sorter.SortReversedByVolumeFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderByDescending(i => i.volume).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortByLabel()
     {
-        alcoholItemsData.Sort(sorter.SortByLabelFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderBy(i => i.label).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortReversedByLabel()
     {
-        alcoholItemsData.Sort(sorter.SortReversedByLabelFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderByDescending(i => i.label).ToList();
+        InstantiateAllItems(sortedItems);
     }
     public void SortByType()
     {
-        alcoholItemsData.Sort(sorter.SortByTypeFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderBy(i => i.type).ToList();
+        InstantiateAllItems(sortedItems);
     }
 
     public void SortReversedByType()
     {
-        alcoholItemsData.Sort(sorter.SortReversedByTypeFunc);
-        InstantiateAllItems(alcoholItemsData);
+        var sortedItems = alcoholItemsData.OrderByDescending(i => i.type).ToList(); ;
+        InstantiateAllItems(sortedItems);
     }
 }
 
