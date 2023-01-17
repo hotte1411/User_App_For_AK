@@ -10,7 +10,6 @@ public class AlcoholItemData : ScriptableObject
     [SerializeField] float _strength;
     [SerializeField] float _price;
     [SerializeField] int _id;
-    [SerializeField] GameObject _prefab;
 
     public AlcoholItemData(string label, string type, float volume, float strength, float price)
     {
@@ -27,5 +26,4 @@ public class AlcoholItemData : ScriptableObject
     public float strength => this._strength;
     public float price => this._price;
     public int id => this._id;
-    public GameObject prefab => this._prefab;
 }

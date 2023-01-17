@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 117555974032902991}
   - component: {fileID: 117555974032902988}
   - component: {fileID: 117555974032902989}
+  - component: {fileID: 3532914277417401453}
   m_Layer: 5
   m_Name: AlcoholItem
   m_TagString: Item
@@ -244,6 +245,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3532914277417401453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117555974032902987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e42e782aaf19d46913d0c75b50c2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: {fileID: 117555975212077769}
+  _type: {fileID: 117555974958467586}
+  _volume: {fileID: 117555974625305475}
+  _strength: {fileID: 117555973939497093}
+  _price: {fileID: 117555974217282098}
 --- !u!1 &117555974054557180
 GameObject:
   m_ObjectHideFlags: 0
