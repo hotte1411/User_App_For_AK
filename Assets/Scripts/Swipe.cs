@@ -34,7 +34,7 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             //Порог свайпа до активации 
             float threshold = clickedElement.GetComponent<RectTransform>().rect.width * thresholdValue;
 
-            //Если свайпнули до порога - показать плашку, что можно отпустить и добавить в заказ
+/*            //Если свайпнули до порога - показать плашку, что можно отпустить и добавить в заказ
             if (clickedElement.localPosition.x >= threshold)
             {
                 clickedElement.GetChild(5).gameObject.SetActive(true);
@@ -42,7 +42,7 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             else if (clickedElement.localPosition.x <= threshold)
             {
                 clickedElement.GetChild(5).gameObject.SetActive(false);
-            }
+            }*/
         }
     }
 
@@ -66,7 +66,7 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
     //заглушка
     private void AddToOrder()
     {
-        basket.GetComponent<TMP_Text>().text += clickedElement.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text + ", ";
+     //   basket.GetComponent<TMP_Text>().text += clickedElement.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text + ", ";
     }
 }
 

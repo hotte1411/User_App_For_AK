@@ -3,36 +3,21 @@ using UnityEngine;
 
 public class ItemsPool<T> where T : MonoBehaviour
 {
-    public T prefab { get; }
-    public Transform container { get; }
-    public List<T> allItems { get; }
-
-    private List<T> _pool;
+    public T prefab;
+    public Transform parent;
+    public List<T> allItems;
 
     public ItemsPool(T prefab, Transform container, int count)
     {
         this.prefab = prefab;
-        this.container = container;
+        this.parent = container;
+        allItems = new List<T>();
 
-        CreatePool(count);
-        allItems = this._pool;
-    }
-
-    private void CreatePool(int count) 
-    {
-        this._pool = new List<T>();
-
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
-            CreateObject();
+            var item = GameObject.Instantiate(prefab, parent);
+            item.gameObject.SetActive(false);
+            allItems.Add(item);
         }
-    }
-
-    private T CreateObject(bool isActiveByDefault = false)
-    {
-        var createdObject = Object.Instantiate(this.prefab, this.container);
-        createdObject.gameObject.SetActive(isActiveByDefault);        
-        this._pool.Add(createdObject);
-        return createdObject;
     }
 }
