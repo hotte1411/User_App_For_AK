@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -34,7 +33,7 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
             //Порог свайпа до активации 
             float threshold = clickedElement.GetComponent<RectTransform>().rect.width * thresholdValue;
 
-/*            //Если свайпнули до порога - показать плашку, что можно отпустить и добавить в заказ
+            /*//Если свайпнули до порога - показать плашку, что можно отпустить и добавить в заказ
             if (clickedElement.localPosition.x >= threshold)
             {
                 clickedElement.GetChild(5).gameObject.SetActive(true);
