@@ -18,6 +18,8 @@ public class Swipe : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerU
         offset = clickedElement.localPosition - Input.mousePosition;
         //Закэшировать начальную позицию
         startPosition = clickedElement.GetComponent<RectTransform>().anchoredPosition;
+
+        Debug.Log(eventData.pointerCurrentRaycast.gameObject.tag);
     }
 
     public void OnDrag(PointerEventData eventData)

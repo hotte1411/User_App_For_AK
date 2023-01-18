@@ -13,15 +13,18 @@ public class MenuEditor : MonoBehaviour
     [SerializeField] List<RectTransform> noAlcoholCategories;
     [SerializeField] List<NoAlcoholItemData> noAlcoholItemsData = new();
 
-//    [SerializeField] SweetslItem sweetsItemPrefab;
-//    [SerializeField] RectTransform sweetslContent;
-//    [SerializeField] List<SweetsItemData> sweetsItemsData = new();
+    [SerializeField] SweetsItem sweetsItemPrefab;
+    [SerializeField] RectTransform sweetslContent;
+    [SerializeField] List<SweetsItemData> sweetsItemsData = new();
 
     private ItemsPool<AlcoholItem> alcoholItemPool;
     private ItemsPool<NoAlcoholItem> noAlcoholItemPool;
+    private ItemsPool<SweetsItem> sweetsItemPool;
 
     void Start()
     {
+        alcoholItemPool = new ItemsPool<AlcoholItem>(alcoholItemPrefab, alcoholContent, alcoholItemsData.Count);
+        sweetsItemPool = new ItemsPool<SweetsItem>(sweetsItemPrefab, sweetslContent, sweetsItemsData.Count);
         noAlcoholItemPool = new ItemsPool<NoAlcoholItem>(noAlcoholItemPrefab);
         foreach(NoAlcoholItemData itemData in noAlcoholItemsData)
         {
@@ -52,26 +55,34 @@ public class MenuEditor : MonoBehaviour
             }
         }
 
-        alcoholItemPool = new ItemsPool<AlcoholItem>(alcoholItemPrefab, alcoholContent, alcoholItemsData.Count);
-
         InitializeAllAlcoholItems(alcoholItemPool, alcoholItemsData);
+        InitializeAllSweetsItems(sweetsItemPool, sweetsItemsData);
         InitializeAllNoAlcoholItems(noAlcoholItemPool, noAlcoholItemsData);
     }
 
-    private void InitializeAllAlcoholItems(ItemsPool<AlcoholItem> pool, List<AlcoholItemData> alcoholItemsData) 
+    private void InitializeAllAlcoholItems(ItemsPool<AlcoholItem> pool, List<AlcoholItemData> itemData) 
     {
-        for (int i = 0; i < alcoholItemsData.Count; i++)
+        for (int i = 0; i < itemData.Count; i++)
         {
-            InitializeAlcoholItemView(pool.allItems[i].gameObject, alcoholItemsData[i]);
+            InitializeAlcoholItemView(pool.allItems[i].gameObject, itemData[i]);
             pool.allItems[i].gameObject.SetActive(true);
         }
     }
 
-    private void InitializeAllNoAlcoholItems(ItemsPool<NoAlcoholItem> pool, List<NoAlcoholItemData> noAlcoholItemsData)
+    private void InitializeAllSweetsItems(ItemsPool<SweetsItem> pool, List<SweetsItemData> itemData)
     {
-        for (int i = 0; i < noAlcoholItemsData.Count; i++)
+        for (int i = 0; i < itemData.Count; i++)
         {
-            InitializeNoAlcoholItemView(pool.allItems[i].gameObject, noAlcoholItemsData[i]);
+            InitializeSweetsItemView(pool.allItems[i].gameObject, itemData[i]);
+            pool.allItems[i].gameObject.SetActive(true);
+        }
+    }
+
+    private void InitializeAllNoAlcoholItems(ItemsPool<NoAlcoholItem> pool, List<NoAlcoholItemData> itemData)
+    {
+        for (int i = 0; i < itemData.Count; i++)
+        {
+            InitializeNoAlcoholItemView(pool.allItems[i].gameObject, itemData[i]);
             pool.allItems[i].gameObject.SetActive(true); 
         }
     }
@@ -83,6 +94,13 @@ public class MenuEditor : MonoBehaviour
         instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.volume.ToString() + "ml";
         instance.transform.GetChild(3).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.strength.ToString() + "%";
         instance.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
+    }
+
+    private void InitializeSweetsItemView(GameObject instance, SweetsItemData model)
+    {
+        instance.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.label;
+        instance.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.volume.ToString() + "g";
+        instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
     }
 
     private void InitializeNoAlcoholItemView(GameObject instance, NoAlcoholItemData model)
