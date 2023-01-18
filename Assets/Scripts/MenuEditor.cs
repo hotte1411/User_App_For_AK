@@ -54,110 +54,104 @@ public class MenuEditor : MonoBehaviour
             }
         }
 
-        InitializeAllAlcoholItems(alcoholItemPool, alcoholItemsData);
-        InitializeAllSweetsItems(sweetsItemPool, sweetsItemsData);
-        InitializeAllNoAlcoholItems(noAlcoholItemPool, noAlcoholItemsData);
+        InitializeAlcoholItems(alcoholItemPool, alcoholItemsData);
+        InitializeSweetsItems(sweetsItemPool, sweetsItemsData);
+        InitializeNoAlcoholItems(noAlcoholItemPool, noAlcoholItemsData);
     }
 
-    private void InitializeAllAlcoholItems(ItemsPool<AlcoholItem> pool, List<AlcoholItemData> itemData) 
+    private void InitializeAlcoholItems(ItemsPool<AlcoholItem> pool, List<AlcoholItemData> itemsData) 
     {
-        for (int i = 0; i < itemData.Count; i++)
+        for (int i = 0; i < itemsData.Count; i++)
         {
-            InitializeAlcoholItemView(pool.allItems[i], itemData[i]);
-            pool.allItems[i].gameObject.SetActive(true);
+            AlcoholItem instance = pool.allItems[i];
+            AlcoholItemData itemData = itemsData[i];
+
+            instance.InitializeItem(itemData.label, itemData.type, itemData.volume, itemData.strength, itemData.price);
+            instance.gameObject.SetActive(true);
         }
     }
 
-    private void InitializeAllSweetsItems(ItemsPool<SweetsItem> pool, List<SweetsItemData> itemData)
+    private void InitializeSweetsItems(ItemsPool<SweetsItem> pool, List<SweetsItemData> itemsData)
     {
-        for (int i = 0; i < itemData.Count; i++)
+        for (int i = 0; i < itemsData.Count; i++)
         {
-            InitializeSweetsItemView(pool.allItems[i], itemData[i]);
-            pool.allItems[i].gameObject.SetActive(true);
+            SweetsItem instance = pool.allItems[i];
+            SweetsItemData itemData = itemsData[i];
+
+            instance.InitializeItem(itemData.label, itemData.volume, itemData.price);
+            instance.gameObject.SetActive(true);
         }
     }
 
-    private void InitializeAllNoAlcoholItems(ItemsPool<NoAlcoholItem> pool, List<NoAlcoholItemData> itemData)
+    private void InitializeNoAlcoholItems(ItemsPool<NoAlcoholItem> pool, List<NoAlcoholItemData> itemsData)
     {
-        for (int i = 0; i < itemData.Count; i++)
+        for (int i = 0; i < itemsData.Count; i++)
         {
-            InitializeNoAlcoholItemView(pool.allItems[i], itemData[i]);
-            pool.allItems[i].gameObject.SetActive(true); 
+            NoAlcoholItem instance = pool.allItems[i];
+            NoAlcoholItemData itemData = itemsData[i];
+
+            instance.InitializeItem(itemData.label, itemData.volume, itemData.price);
+            instance.gameObject.SetActive(true); 
         }
-    }
-
-    private void InitializeAlcoholItemView(AlcoholItem instance, AlcoholItemData model)
-    {
-        instance.InitializeItem(model.label, model.type, model.volume + "ml", model.strength + "%", model.price + " uah");
-    }
-
-    private void InitializeSweetsItemView(SweetsItem instance, SweetsItemData model)
-    {
-        instance.InitializeItem(model.label, model.volume + "g", model.price + " uah");
-    }
-
-    private void InitializeNoAlcoholItemView(NoAlcoholItem instance, NoAlcoholItemData model)
-    {
-        instance.InitializeItem(model.label, model.volume + "ml", model.price + " uah");
     }
 
     public void SortByPrice()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.price).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortReversedByPrice()
     {
         var sortedItems = alcoholItemsData.OrderByDescending(i => i.price).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortByStrength()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.strength).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortReversedByStrength()
     {
         var sortedItems = alcoholItemsData.OrderByDescending(i => i.strength).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortByVolume()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.volume).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortReversedByVolume()
     {
         var sortedItems = alcoholItemsData.OrderByDescending(i => i.volume).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortByLabel()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.label).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortReversedByLabel()
     {
         var sortedItems = alcoholItemsData.OrderByDescending(i => i.label).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortByType()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.type).ToList();
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 
     public void SortReversedByType()
     {
         var sortedItems = alcoholItemsData.OrderByDescending(i => i.type).ToList(); ;
-        InitializeAllAlcoholItems(alcoholItemPool, sortedItems);
+        InitializeAlcoholItems(alcoholItemPool, sortedItems);
     }
 }

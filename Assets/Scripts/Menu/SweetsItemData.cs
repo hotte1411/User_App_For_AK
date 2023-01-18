@@ -6,12 +6,12 @@ using UnityEngine;
 public class SweetsItemData : ScriptableObject
 {
     [SerializeField] string _label;
-    [SerializeField] float _volume;
-    [SerializeField] float _price;
+    [SerializeField] string _volume;
+    [SerializeField] string _price;
     [SerializeField] int _id;
 
     public string label => this._label;
-    public float volume => this._volume;
-    public float price => this._price;
+    public string volume => this._volume;
+    public string price => this._price;
     public int id => this._id;
 }

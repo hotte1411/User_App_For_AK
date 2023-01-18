@@ -10,8 +10,8 @@ public class SweetsItem : MenuItem
     public void InitializeItem(string label, string volume, string price)
     {
         SetLabel(label);
-        SetVolume(volume);
-        SetPrice(price);
+        SetVolume(volume + "g");
+        SetPrice(price + " uah");
     }
 
     private void SetLabel(string text) => this._label.text = text;

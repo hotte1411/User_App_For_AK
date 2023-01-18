@@ -13,9 +13,9 @@ public class AlcoholItem : MenuItem
     {
         SetLabel(label);
         SetType(type);
-        SetVolume(volume);
-        SetStrength(strength);
-        SetPrice(price);
+        SetVolume(volume + "ml");
+        SetStrength(strength + "%");
+        SetPrice(price + " uah");
     }
 
     private void SetLabel(string text) => this._label.text = text;
