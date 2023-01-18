@@ -110,14 +110,6 @@ public class MenuEditor : MonoBehaviour
         instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
     }
 
-    private void CleanMenu(Transform content) 
-    { 
-        foreach(Transform child in content)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
     public void SortByPrice()
     {
         var sortedItems = alcoholItemsData.OrderBy(i => i.price).ToList();
