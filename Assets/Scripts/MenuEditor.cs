@@ -18,44 +18,52 @@ public class MenuEditor : MonoBehaviour
 //    [SerializeField] List<SweetsItemData> sweetsItemsData = new();
 
     private ItemsPool<AlcoholItem> alcoholItemPool;
-    private ItemsPool<NoAlcoholItem> teaItemPool;
-    private ItemsPool<NoAlcoholItem> coffeeItemPool;
-//    private ItemsPool<SweetsItem> sweetslItemPool;
+    private ItemsPool<NoAlcoholItem> noAlcoholItemPool;
 
     void Start()
     {
-        List<NoAlcoholItemData> tea = new();
-        List<NoAlcoholItemData> coffee = new();
-
+        noAlcoholItemPool = new ItemsPool<NoAlcoholItem>(noAlcoholItemPrefab);
         foreach(NoAlcoholItemData itemData in noAlcoholItemsData)
         {
             switch (itemData.type)
             {
-                case "Чай": 
-                    tea.Add(itemData);
+                case "Чай":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[0]);
                     break;
                 case "Кофе":
-                    coffee.Add(itemData);
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[1]);
+                    break;
+                case "Газировка":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[2]);
+                    break;
+                case "Вода":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[3]);
+                    break;
+                case "Сок":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[4]);
+                    break;
+                case "Другое":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[5]);
+                    break;
+                case "Молоко":
+                    noAlcoholItemPool.AddToPool(noAlcoholCategories[6]);
                     break;
                 default: break;
             }
         }
 
         alcoholItemPool = new ItemsPool<AlcoholItem>(alcoholItemPrefab, alcoholContent, alcoholItemsData.Count);
-        teaItemPool = new ItemsPool<NoAlcoholItem>(noAlcoholItemPrefab, noAlcoholCategories[0], tea.Count);        
-        coffeeItemPool = new ItemsPool<NoAlcoholItem>(noAlcoholItemPrefab, noAlcoholCategories[1], coffee.Count);
 
         InitializeAllAlcoholItems(alcoholItemPool, alcoholItemsData);
-        InitializeAllNoAlcoholItems(teaItemPool, tea);
-        InitializeAllNoAlcoholItems(coffeeItemPool, coffee);
+        InitializeAllNoAlcoholItems(noAlcoholItemPool, noAlcoholItemsData);
     }
 
     private void InitializeAllAlcoholItems(ItemsPool<AlcoholItem> pool, List<AlcoholItemData> alcoholItemsData) 
     {
         for (int i = 0; i < alcoholItemsData.Count; i++)
         {
-            pool.allItems[i].gameObject.SetActive(true);
             InitializeAlcoholItemView(pool.allItems[i].gameObject, alcoholItemsData[i]);
+            pool.allItems[i].gameObject.SetActive(true);
         }
     }
 
@@ -63,8 +71,8 @@ public class MenuEditor : MonoBehaviour
     {
         for (int i = 0; i < noAlcoholItemsData.Count; i++)
         {
-            pool.allItems[i].gameObject.SetActive(true);
             InitializeNoAlcoholItemView(pool.allItems[i].gameObject, noAlcoholItemsData[i]);
+            pool.allItems[i].gameObject.SetActive(true); 
         }
     }
 

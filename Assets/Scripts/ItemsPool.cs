@@ -21,6 +21,16 @@ public class ItemsPool<T> where T : MonoBehaviour
         }
     }
 
+    public ItemsPool(T prefab)
+    {
+        this.prefab = prefab;
+        allItems = new List<T>();
+    }
 
-
+    public void AddToPool(Transform container)
+    {
+        this.parent = container;
+        var item = GameObject.Instantiate(prefab, parent);
+        allItems.Add(item);
+    }
 }
