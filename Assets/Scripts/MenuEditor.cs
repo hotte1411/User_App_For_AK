@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using System.Linq;
 
 public class MenuEditor : MonoBehaviour
@@ -64,7 +63,7 @@ public class MenuEditor : MonoBehaviour
     {
         for (int i = 0; i < itemData.Count; i++)
         {
-            InitializeAlcoholItemView(pool.allItems[i].gameObject, itemData[i]);
+            InitializeAlcoholItemView(pool.allItems[i], itemData[i]);
             pool.allItems[i].gameObject.SetActive(true);
         }
     }
@@ -73,7 +72,7 @@ public class MenuEditor : MonoBehaviour
     {
         for (int i = 0; i < itemData.Count; i++)
         {
-            InitializeSweetsItemView(pool.allItems[i].gameObject, itemData[i]);
+            InitializeSweetsItemView(pool.allItems[i], itemData[i]);
             pool.allItems[i].gameObject.SetActive(true);
         }
     }
@@ -82,32 +81,24 @@ public class MenuEditor : MonoBehaviour
     {
         for (int i = 0; i < itemData.Count; i++)
         {
-            InitializeNoAlcoholItemView(pool.allItems[i].gameObject, itemData[i]);
+            InitializeNoAlcoholItemView(pool.allItems[i], itemData[i]);
             pool.allItems[i].gameObject.SetActive(true); 
         }
     }
 
-    private void InitializeAlcoholItemView(GameObject instance, AlcoholItemData model)
+    private void InitializeAlcoholItemView(AlcoholItem instance, AlcoholItemData model)
     {
-        instance.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.label;
-        instance.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.type;
-        instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.volume.ToString() + "ml";
-        instance.transform.GetChild(3).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.strength.ToString() + "%";
-        instance.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
+        instance.InitializeItem(model.label, model.type, model.volume + "ml", model.strength + "%", model.price + " uah");
     }
 
-    private void InitializeSweetsItemView(GameObject instance, SweetsItemData model)
+    private void InitializeSweetsItemView(SweetsItem instance, SweetsItemData model)
     {
-        instance.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.label;
-        instance.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.volume.ToString() + "g";
-        instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
+        instance.InitializeItem(model.label, model.volume + "g", model.price + " uah");
     }
 
-    private void InitializeNoAlcoholItemView(GameObject instance, NoAlcoholItemData model)
+    private void InitializeNoAlcoholItemView(NoAlcoholItem instance, NoAlcoholItemData model)
     {
-        instance.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.label;
-        instance.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.volume.ToString() + "ml";
-        instance.transform.GetChild(2).GetChild(0).gameObject.GetComponent<TMP_Text>().text = model.price.ToString() + " uah";
+        instance.InitializeItem(model.label, model.volume + "ml", model.price + " uah");
     }
 
     public void SortByPrice()
